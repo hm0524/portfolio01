@@ -1,3 +1,28 @@
+/**
+ * 作品一覧(Model)
+ * @param  {Number} id
+ * @param  {String} title
+ * @param  {String} subtitle
+ * @param  {String} url
+ */
+var workListModel = Backbone.Model.extend({
+
+	// インスタンス生成時に設定するデフォルト値を定義
+	defaults: {
+		"id": "",
+		"title": "",
+		"subtitle": "",
+		"url": ""
+	},
+
+});
+
+/**
+ * 作品一覧(Collection)
+ */
+var workListCollection = Backbone.Collection.extend({
+	model: workListModel
+});
 
 var _Model = Backbone.Model.extend({
 	//constructor: function() {},
@@ -344,6 +369,9 @@ workListPaddingTop = function(xxx){
 
 };
 
+
+
+
 /**
  * ウインドウリサイズ完了(一応)処理
  */
@@ -370,8 +398,63 @@ workListPaddingTop = function(xxx){
 
 }());
 
-
 (function () {
+
+	var _workListCollection
+
+	/**
+	 * CSVデータをJSON形式に変換
+	 * @param  {Object} csvArray
+	 * @return {Object} jsonArray
+	 */
+	function csv2json(csvArray){
+		var jsonArray = [];
+
+		// 1行目から「項目名」の配列を生成する
+		var items = csvArray[0].split(',');
+
+		// CSVデータの配列の各行をループ処理する
+		//// 配列の先頭要素(行)は項目名のため処理対象外
+		//// 配列の最終要素(行)は空のため処理対象外
+		for (var i = 1; i < csvArray.length - 1; i++) {
+			var a_line = new Object();
+			// カンマで区切られた各データに分割する
+			var csvArrayD = csvArray[i].split(',');
+			//// 各データをループ処理する
+			for (var j = 0; j < items.length; j++) {
+				// 要素名：items[j]
+				// データ：csvArrayD[j]
+				a_line[items[j]] = csvArrayD[j];
+			}
+			jsonArray.push(a_line);
+		}
+		//console.debug(jsonArray);
+		return jsonArray;
+	}
+
+	/**
+	 * csvファイル読み込み
+	 * @param  {String} _fileName 読み込むファイル名
+	 */
+	readCsvData = function(_fileName){
+
+		$.get(_fileName,function(data){
+
+			var d = data.split('\n'); // 1行ごとに分割する
+			var jsonArray = csv2json(d); // JSON形式に変換
+
+			_workListCollection = new workListCollection([jsonArray]);
+
+			console.log("objs: " + JSON.stringify(_workListCollection));
+
+		})
+
+	};
+
+	readCsvData('worklist.csv');
+
+//	var objs = new Backbone.Collection([jsonWorklist]);
+//	console.log("objs: " + JSON.stringify(objs));
 
 	var _M = new _Model();
 	var _V = new _View({model:_M});
