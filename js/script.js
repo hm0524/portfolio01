@@ -205,7 +205,8 @@ const viewSetting = Backbone.View.extend({
 	 */
 	_onWorkBtn: function(ev){
 		let _target = ev["target"];
-		window.location.href = $(_target).data("url");
+		let _id =  $(_target).attr("id"); 
+		window.location.href = $(_target).data("url") + "?id=" + _id;
 	}
 
 });
@@ -339,6 +340,13 @@ const viewWorklist = Backbone.View.extend({
 
 });
 
+/**
+ * localStorageに保存
+ */
+const setLocalStorage = function(_list){
+	localStorage.setItem('setting', JSON.stringify(_list));
+};
+
 let collectionInstanceSetting;
 
 /**
@@ -399,6 +407,9 @@ const loadSetting = function(){
 			// Collectionを渡す
 			collection:collectionInstanceSetting
 		});
+		
+		// localStorageに保存
+		setLocalStorage(collectionInstanceSetting);
 
 		return defer.promise();
 
