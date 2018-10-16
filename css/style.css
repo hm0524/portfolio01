@@ -422,7 +422,6 @@ footer div {
 }
 
 
-
 /* ――――― PICK UP ――――― */
 .class-slider {
 	display:none;
@@ -432,33 +431,13 @@ footer div {
 }
 
 
-/*.class-pick-up img {
-	width: 25vw;
-}	*/
-
-
-
-
-
-
-
-
-
-
-/*
-.header-left {
-	float: left !important;
-}
-.header-right {
-	float: right !important;
-}
-*/
-
-
 .class-main {
 	max-width: 960px;
+	width: 100%;
 }
 
-.class-main p img{
+.imgCenter img{
 	margin: 0 auto;
+	width: 100%;
+	height: auto;
 }

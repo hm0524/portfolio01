@@ -3,7 +3,7 @@ const seting = [
 		"id": 1,
 		"menuTitle": "いざゆけ!難田学園中等部",
 		"pickUpUrl": "img/nanda_header.png",
-		"workUrl": "img/nanda_header.png",
+		"workUrl": "http://cre-m.jp/category/gif_manga/nanda_gakuen/",
 		"pickUpTitle": "いざゆけ!<br>難田学園中等部",
 		"caption": "GIFマンガ",
 		"comment": "いざゆけ!難田学園中等部のコメント"
@@ -21,7 +21,7 @@ const seting = [
 		"id": 3,
 		"menuTitle": "作品03",
 		"pickUpUrl": "img/j0040.png",
-		"workUrl": "img/j0040.png",
+		"workUrl": "sub02.html",
 		"pickUpTitle": "マンガ",
 		"caption": "キャプション03キャプション",
 		"comment": "作品03のコメント"
