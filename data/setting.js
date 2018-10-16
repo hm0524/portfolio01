@@ -1,12 +1,12 @@
 const seting = [
 	{
 		"id": 1,
-		"menuTitle": "作品01",
-		"pickUpUrl": "img/j0026.png",
-		"workUrl": "img/j0026.png",
-		"pickUpTitle": "ニガテ0",
-		"caption": "実力診断マークテスト",
-		"comment": "作品01のコメント"
+		"menuTitle": "いざゆけ!難田学園中等部",
+		"pickUpUrl": "img/nanda_header.png",
+		"workUrl": "img/nanda_header.png",
+		"pickUpTitle": "いざゆけ!<br>難田学園中等部",
+		"caption": "GIFマンガ",
+		"comment": "いざゆけ!難田学園中等部のコメント"
 	},
 	{
 		"id": 2,

@@ -93,10 +93,20 @@ const viewSetting = Backbone.View.extend({
 	createWorkList: function(_model){
 
 		// ヘッダメニューの作品一覧
-		$("#id-workList").append("<li><a id=" + _model["attributes"]["id"] +" href='#'>" + _model["attributes"]["menuTitle"] + "</a></li>");
+		let setHtmlH =	 		'<li>';
+		setHtmlH = setHtmlH + 		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
+		setHtmlH = setHtmlH + 			_model["attributes"]["menuTitle"];
+		setHtmlH = setHtmlH + 		'</a>';
+		setHtmlH = setHtmlH + 	'</li>';
+		$("#id-workList").append(setHtmlH);
 
 		// サイドメニューの作品一覧
-		$("#id-sub").append("<li class='class-side-nav-text'><a id=" + _model["attributes"]["id"] +" href='#'>" + _model["attributes"]["menuTitle"] + "</a></li>");
+		let setHtmlS =	 		'<li class="class-side-nav-text">';
+		setHtmlS = setHtmlS +		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
+		setHtmlS = setHtmlS + 			_model["attributes"]["menuTitle"];
+		setHtmlS = setHtmlS + 		'</a>';
+		setHtmlS = setHtmlS + 	'</li>';
+		$("#id-sub").append(setHtmlS);
 
 	},
 
@@ -194,7 +204,8 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onWorkBtn: function(ev){
-		this.linkInThePage('#element-id');
+		let _target = ev["target"];
+		window.location.href = $(_target).data("url");
 	}
 
 });
@@ -275,13 +286,26 @@ const viewPickup = Backbone.View.extend({
 	 */
 	createPickup: function(_model){
 
-		let _code;
-
 		// PICK UPアドレスが空白はスルー
 		if(_model["attributes"]["pickUpUrl"]){
-//			_code = $("<div><figure class='pick-up-title'><img id=" + _model["attributes"]["id"] +" data-lazy=" + _model["attributes"]["pickUpUrl"] + "><figcaption><h2>" + _model["attributes"]["pickUpTitle"] + "</h2><p>" + _model["attributes"]["caption"] + "</p></figcaption><a id=" + _model["attributes"]["id"] +"></a></figure></div>");
-			_code = $("<div><figure class='pick-up-title'><img id=" + _model["attributes"]["id"] +" src=" + _model["attributes"]["pickUpUrl"] + "><figcaption><h2>" + _model["attributes"]["pickUpTitle"] + "</h2><p>" + _model["attributes"]["caption"] + "</p></figcaption><a id=" + _model["attributes"]["id"] +"></a></figure></div>");
-			$("#id-slider").append(_code);
+
+			// PICK UP
+			let setHtmlP =	 		'<div>';
+			setHtmlP = setHtmlP + 		'<figure class="pick-up-title">';
+//			setHtmlP = setHtmlP + 			'<img id=' + _model["attributes"]["id"] +' data-lazy=' + _model["attributes"]["pickUpUrl"]  + ' href=# data-url=' + _model["attributes"]["workUrl"] + '>';
+			setHtmlP = setHtmlP + 			'<img id=' + _model["attributes"]["id"] +' src=' + _model["attributes"]["pickUpUrl"]  + ' href=# data-url=' + _model["attributes"]["workUrl"] + '>';
+			setHtmlP = setHtmlP + 			'<figcaption>';
+			setHtmlP = setHtmlP + 				'<h2>';
+			setHtmlP = setHtmlP + 					_model["attributes"]["pickUpTitle"];
+			setHtmlP = setHtmlP + 				'</h2>';
+			setHtmlP = setHtmlP + 				'<p>';
+			setHtmlP = setHtmlP + 					_model["attributes"]["caption"];
+			setHtmlP = setHtmlP + 				'</p>';
+			setHtmlP = setHtmlP + 			'</figcaption>';
+			setHtmlP = setHtmlP + 			'<a id=' + _model["attributes"]["id"] +' data-url=' + _model["attributes"]["workUrl"] + '></a>';
+			setHtmlP = setHtmlP + 		'</figure>';
+			setHtmlP = setHtmlP + 	'</div>';
+			$("#id-slider").append(setHtmlP);
 
 		}
 
