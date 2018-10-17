@@ -1,4 +1,8 @@
 
+// Homeアドレス
+//const _homeUrl = "https://hm0524.github.io/portfolio01/";
+//const _homeUrl = "https://aegis.cx/sample/hm/portfolio01/";
+
 /**
  * Model定義 【設定ファイル】
  */
@@ -123,7 +127,15 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onTopBtn: function(ev){
-		this.linkInThePage('#element-id');
+		
+		let NowUrl = window.location.href;
+		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
+
+		if (_fileName === "index" ) {
+			this.linkInThePage('#element-id');
+		} else {
+			window.location.href = localStorage.getItem('homeUrl');;
+		}
 	},
 	
 	/**
@@ -139,7 +151,18 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onblogBtn: function(ev){
-		this.linkInThePage('#id-blog');
+	
+		let NowUrl = window.location.href;
+		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
+
+		if (_fileName === "index" ) {
+			this.linkInThePage('#id-blog');
+		} else {
+//console.log(localStorage.getItem('homeUrl') + '#id-blog')
+			localStorage.setItem('homeTransition', '#id-blog');
+			window.location.href = localStorage.getItem('homeUrl');
+		}
+
 	},
 	
 	/**
@@ -368,7 +391,7 @@ const createInstanceSetting = function(_json){
  */
 const loadSetting = function(){
 
-	var defer = $.Deferred();
+	let defer = $.Deferred();
 	
 	let _data;
 

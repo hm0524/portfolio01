@@ -1,6 +1,17 @@
 
 (function () {
 
+	// Homeアドレス
+	localStorage.setItem('homeUrl', window.location.href);
+
+	const idTransition = function(){
+		let _homeTransition = localStorage.getItem('homeTransition');
+		if (_homeTransition) {
+			localStorage.setItem('homeTransition', "");
+			$("html,body").animate({scrollTop:$(_homeTransition).offset().top}, 500, 'swing');
+		}
+	};
+
 	// メニュー配置
 	$('#id_menu').load('temp_menu.html', function() {
 
@@ -21,13 +32,13 @@
 				loadWorklist();
 
 				// フッタ 配置
-				$('#id_footer').load('temp_footer.html');
+				$('#id_footer').load('temp_footer.html', function() {
+					idTransition();
+				});
 
 			});
 		});
 	});
 
 }());
-
-
 
