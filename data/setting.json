@@ -12,7 +12,7 @@
 		"id": 2,
 		"menuTitle": "作品02",
 		"pickUpUrl": "",
-		"workUrl": "img/image_slider_2.jpg",
+		"workUrl": "sub02.html",
 		"pickUpTitle": "タイトル02",
 		"caption": "キャプション02",
 		"comment": "作品02のコメント"
@@ -21,7 +21,7 @@
 		"id": 3,
 		"menuTitle": "作品03",
 		"pickUpUrl": "img/j0040.png",
-		"workUrl": "sub02.html",
+		"workUrl": "sub03.html",
 		"pickUpTitle": "マンガ",
 		"caption": "キャプション03キャプション",
 		"comment": "作品03のコメント"

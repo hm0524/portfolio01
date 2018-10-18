@@ -4,6 +4,9 @@
 	// Homeアドレス
 	localStorage.setItem('homeUrl', window.location.href);
 
+	/**
+	 * ページ内遷移
+	 */
 	const idTransition = function(){
 		let _homeTransition = localStorage.getItem('homeTransition');
 		if (_homeTransition) {
@@ -33,6 +36,7 @@
 
 				// フッタ 配置
 				$('#id_footer').load('temp_footer.html', function() {
+					// ページ内遷移
 					idTransition();
 				});
 

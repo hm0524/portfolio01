@@ -134,7 +134,7 @@ const viewSetting = Backbone.View.extend({
 		if (_fileName === "index" ) {
 			this.linkInThePage('#element-id');
 		} else {
-			window.location.href = localStorage.getItem('homeUrl');;
+			window.location.href = localStorage.getItem('homeUrl');
 		}
 	},
 	
@@ -151,14 +151,13 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onblogBtn: function(ev){
-	
+
 		let NowUrl = window.location.href;
 		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
 
 		if (_fileName === "index" ) {
 			this.linkInThePage('#id-blog');
 		} else {
-//console.log(localStorage.getItem('homeUrl') + '#id-blog')
 			localStorage.setItem('homeTransition', '#id-blog');
 			window.location.href = localStorage.getItem('homeUrl');
 		}
