@@ -1,8 +1,4 @@
 
-// Homeアドレス
-//const _homeUrl = "https://hm0524.github.io/portfolio01/";
-//const _homeUrl = "https://aegis.cx/sample/hm/portfolio01/";
-
 /**
  * Model定義 【設定ファイル】
  */
@@ -58,7 +54,7 @@ const viewSetting = Backbone.View.extend({
 		this.render();
 		
 		const events = {
-            'click #id-menuHomeBtn'		: '_onTopBtn',			// ヘッダ [Home]
+            'click #id-menuHomeBtn'		: '_onHomeBtn',			// ヘッダ [Home]
 			'click #id-menuWorkListBtn'	: '_onWorkListBtn',		// ヘッダ [作品一覧]
 			'click #id-blogBtn'			: '_onblogBtn',			// ヘッダ [ブログ]
 			'click #id-enquiryBtn'		: '_onenquiryBtn',		// ヘッダ [お問い合わせ]
@@ -115,27 +111,53 @@ const viewSetting = Backbone.View.extend({
 	},
 
 	/**
+	 * ページ内リンク移動
+	 * @param jumpTarget リンク先id
+	 */
+	linkInThePageMove: function(jumpTarget){
+		$("html,body").animate({scrollTop:$(jumpTarget).offset().top}, 500, 'swing');
+	},
+
+	/**
 	 * ページ内リンク
 	 * @param jumpTarget リンク先id
 	 */
 	linkInThePage: function(jumpTarget){
-		$("html,body").animate({scrollTop:$(jumpTarget).offset().top}, 500, 'swing');
+
+		let NowUrl = window.location.href;
+		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
+
+		if (_fileName === "index" ) {
+			this.linkInThePageMove(jumpTarget);
+		} else {
+			localStorage.setItem('homeTransition', jumpTarget);
+			window.location.href = localStorage.getItem('homeUrl');
+		}
+
 	},
-	
+
 	/**
-	 * [Home][Top]ボタンクリック
+	 * [Home]ボタンクリック
 	 * @param ev
 	 */
-	_onTopBtn: function(ev){
+	_onHomeBtn: function(ev){
 		
 		let NowUrl = window.location.href;
 		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
 
 		if (_fileName === "index" ) {
-			this.linkInThePage('#element-id');
+			this.linkInThePageMove('#element-id');
 		} else {
 			window.location.href = localStorage.getItem('homeUrl');
 		}
+	},
+
+	/**
+	 * [Top]ボタンクリック
+	 * @param ev
+	 */
+	_onTopBtn: function(ev){
+		this.linkInThePageMove('#element-id');
 	},
 	
 	/**
@@ -151,17 +173,7 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onblogBtn: function(ev){
-
-		let NowUrl = window.location.href;
-		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
-
-		if (_fileName === "index" ) {
-			this.linkInThePage('#id-blog');
-		} else {
-			localStorage.setItem('homeTransition', '#id-blog');
-			window.location.href = localStorage.getItem('homeUrl');
-		}
-
+		this.linkInThePage('#id-blog');
 	},
 	
 	/**
@@ -316,7 +328,7 @@ const viewPickup = Backbone.View.extend({
 			let setHtmlP =	 		'<div>';
 			setHtmlP = setHtmlP + 		'<figure class="pick-up-title">';
 //			setHtmlP = setHtmlP + 			'<img id=' + _model["attributes"]["id"] +' data-lazy=' + _model["attributes"]["pickUpUrl"]  + ' href=# data-url=' + _model["attributes"]["workUrl"] + '>';
-			setHtmlP = setHtmlP + 			'<img id=' + _model["attributes"]["id"] +' src=' + _model["attributes"]["pickUpUrl"]  + ' href=# data-url=' + _model["attributes"]["workUrl"] + '>';
+			setHtmlP = setHtmlP + 			'<img id=' + _model["attributes"]["id"] +' src="../' + _model["attributes"]["pickUpUrl"]  + '" href=# data-url=' + _model["attributes"]["workUrl"] + '>';
 			setHtmlP = setHtmlP + 			'<figcaption>';
 			setHtmlP = setHtmlP + 				'<h2>';
 			setHtmlP = setHtmlP + 					_model["attributes"]["pickUpTitle"];
@@ -396,7 +408,7 @@ const loadSetting = function(){
 
 	// 設定ファイル 読み込み
 	$.when(
-		$.getJSON('data/setting.json')
+		$.getJSON('../data/setting.json')
 	)
 	.done(function(json){
 		// 成功
@@ -445,7 +457,7 @@ const loadSetting = function(){
 const loadWorklist = function(){
 
 	// 作品一覧ファイル 読み込み
-	$.getJSON('data/worklist.json')
+	$.getJSON('../data/worklist.json')
 		.done(function(json){
 			// 成功
 

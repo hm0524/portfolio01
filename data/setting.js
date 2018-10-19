@@ -10,9 +10,9 @@ const seting = [
 	},
 	{
 		"id": 2,
-		"menuTitle": "作品02",
+		"menuTitle": "マイスタイル",
 		"pickUpUrl": "",
-		"workUrl": "img/image_slider_2.jpg",
+		"workUrl": "../mystyle/index.html",
 		"pickUpTitle": "タイトル02",
 		"caption": "キャプション02",
 		"comment": "作品02のコメント"
