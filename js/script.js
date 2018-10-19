@@ -367,7 +367,7 @@ const viewWorklist = Backbone.View.extend({
 		this.collection.each(function (model, index) {
 			// ヘッダメニューの作品一覧
 //			$("#id-works").append("<a href='#' class='col-md-3'><span data-subtitle=" + model['attributes']['subTitle'] + ">" + model['attributes']['title'] + "</span></a>");
-			$("#id-works").append("<a class='class-workList' href='#0' data-title=" + model['attributes']['subTitle'] + "><span>" + model['attributes']['title'] + "</span></a>");
+			$("#id-works").append("<a class='class-workList' href='../" + model['attributes']['url'] + "' data-title=" + model['attributes']['subTitle'] + "><span>" + model['attributes']['title'] + "</span></a>");
 		}, this);
 
 	},
