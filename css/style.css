@@ -243,6 +243,8 @@ nav a {
 	-ms-flex-align: center;
 	align-items: center;
 	text-align: center;		/* for no-flexbox browsers */
+	padding-top: 60px;
+	margin-top: -60px;
 }
 
 .class-sub-title:before,
@@ -391,6 +393,11 @@ ul.circle_group{
 }
 
 /* ――――― ブログエリア ――――― */
+.class-blog {
+	padding-top: 50px;
+	margin-top: -50px;
+}
+
 .embed-wrapper iframe {
 	width: 100%;
 	height: 100%;
@@ -436,13 +443,15 @@ footer div {
 	width: 100%;
 }
 
+
+/* ――――― 作品一覧 ――――― */
 .imgCenter img{
 	margin: 0 auto;
-	width: 100%;
+	max-width: 100%;
 	height: auto;
 }
 
-
+/*
 .class-external-wrapper {
 	padding-bottom: 100%;
 	position: relative;
@@ -454,3 +463,4 @@ footer div {
 	position: absolute;
 	border: none;
 }
+*/

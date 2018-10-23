@@ -43,11 +43,11 @@ const collectionDefine = Backbone.Collection.extend();
 const viewSetting = Backbone.View.extend({
 
 	// DOMエレメントを指定
-//	el_workList: '#id-workList',
+//	el: '#id-workList',
 	el: '#element-id',
 
 	// テンプレートをコンパイルする
-//	compileTempWorkList: _.template($('#id-tempWorkList').html()),
+	compileTempHeadMenu: _.template($('#temp_headMenu').html()),
 
 	initialize: function () {
 	
@@ -83,6 +83,9 @@ const viewSetting = Backbone.View.extend({
 
 			// 作品一覧 配置
 			that.createWorkList(model);
+			
+//			$(this.el).append(this.compileTempHeadMenu(model.toJSON()));
+			$("#id-workList").append(this.compileTempHeadMenu(model.toJSON()));
 
 		}, this);
 
@@ -92,7 +95,7 @@ const viewSetting = Backbone.View.extend({
 	 * 作品一覧 配置
 	 */
 	createWorkList: function(_model){
-
+/*
 		// ヘッダメニューの作品一覧
 		let setHtmlH =	 		'<li>';
 		setHtmlH = setHtmlH + 		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
@@ -100,7 +103,7 @@ const viewSetting = Backbone.View.extend({
 		setHtmlH = setHtmlH + 		'</a>';
 		setHtmlH = setHtmlH + 	'</li>';
 		$("#id-workList").append(setHtmlH);
-
+*/
 		// サイドメニューの作品一覧
 		let setHtmlS =	 		'<li class="class-side-nav-text">';
 		setHtmlS = setHtmlS +		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
@@ -166,7 +169,7 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onWorkListBtn: function(ev){
-		this.linkInThePage('#id-work-list');
+		this.linkInThePage('#id-work-list-title');
 	},
 	
 	/**
@@ -366,9 +369,11 @@ const viewWorklist = Backbone.View.extend({
 	render: function () {
 	
 		this.collection.each(function (model, index) {
-			// ヘッダメニューの作品一覧
-//			$("#id-works").append("<a href='#' class='col-md-3'><span data-subtitle=" + model['attributes']['subTitle'] + ">" + model['attributes']['title'] + "</span></a>");
-			$("#id-works").append("<a class='class-workList' href='../" + model['attributes']['url'] + "' data-title=" + model['attributes']['subTitle'] + "><span>" + model['attributes']['title'] + "</span></a>");
+			// 作品一覧
+			let setHtmlP =	 		'<a class="class-workList" href="../' + model["attributes"]["url"] + '" data-title=' + model["attributes"]["subTitle"] + '">';
+			setHtmlP = setHtmlP + 		'<span>' + model["attributes"]["title"] + '</span>';
+			setHtmlP = setHtmlP + 	'</a>';
+			$("#id-works").append(setHtmlP);
 		}, this);
 
 	},
