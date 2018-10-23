@@ -47,7 +47,8 @@ const viewSetting = Backbone.View.extend({
 	el: '#element-id',
 
 	// テンプレートをコンパイルする
-	compileTempHeadMenu: _.template($('#temp_headMenu').html()),
+//	compileTempHeadMenu: _.template($('#temp_headMenu').html()),
+	compileTempHeadMenu: _.template(_render("headMenu")),
 
 	initialize: function () {
 	
@@ -82,10 +83,11 @@ const viewSetting = Backbone.View.extend({
 		that.collection.each(function (model, index) {
 
 			// 作品一覧 配置
-			that.createWorkList(model);
+//			that.createWorkList(model);
 			
 //			$(this.el).append(this.compileTempHeadMenu(model.toJSON()));
 			$("#id-workList").append(this.compileTempHeadMenu(model.toJSON()));
+			$("#id-sub").append(this.compileTempHeadMenu(model.toJSON()));
 
 		}, this);
 
@@ -95,7 +97,7 @@ const viewSetting = Backbone.View.extend({
 	 * 作品一覧 配置
 	 */
 	createWorkList: function(_model){
-/*
+
 		// ヘッダメニューの作品一覧
 		let setHtmlH =	 		'<li>';
 		setHtmlH = setHtmlH + 		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
@@ -103,7 +105,7 @@ const viewSetting = Backbone.View.extend({
 		setHtmlH = setHtmlH + 		'</a>';
 		setHtmlH = setHtmlH + 	'</li>';
 		$("#id-workList").append(setHtmlH);
-*/
+
 		// サイドメニューの作品一覧
 		let setHtmlS =	 		'<li class="class-side-nav-text">';
 		setHtmlS = setHtmlS +		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
@@ -502,6 +504,31 @@ const createInstanceWorklist = function(_json){
 		collectionInstanceWorklist.add(new Backbone.Model(element));
 	});
 
+};
+
+/**
+ * テンプレートファイル読み込み
+ */
+var tmpl_cache;
+function _render(tmpl_name) {
+	if ( !tmpl_cache ) { 
+		tmpl_cache = {};
+	}
+	if ( ! tmpl_cache[tmpl_name] ) {
+		let tmpl_url = '../temp/' + tmpl_name + '.html';
+		let tmpl_string;
+		$.ajax({
+			url: tmpl_url,
+			method: 'GET',
+			async: false,
+			dataType: "html",
+			success: function(data) {
+				tmpl_string = data;
+			}
+		});
+		tmpl_cache[tmpl_name] = tmpl_string;
+	}
+	return tmpl_cache[tmpl_name];
 };
 
 /**
