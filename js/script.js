@@ -77,42 +77,14 @@ const viewSetting = Backbone.View.extend({
 	 */
 	render: function () {
 
-		const that = this;
-
 		// 作品一覧配置
-		that.collection.each(function (model, index) {
+		this.collection.each(function (model, index) {
 
-			// 作品一覧 配置
-//			that.createWorkList(model);
-			
 //			$(this.el).append(this.compileTempHeadMenu(model.toJSON()));
 			$("#id-workList").append(this.compileTempHeadMenu(model.toJSON()));
 			$("#id-sub").append(this.compileTempHeadMenu(model.toJSON()));
 
 		}, this);
-
-	},
-
-	/**
-	 * 作品一覧 配置
-	 */
-	createWorkList: function(_model){
-
-		// ヘッダメニューの作品一覧
-		let setHtmlH =	 		'<li>';
-		setHtmlH = setHtmlH + 		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
-		setHtmlH = setHtmlH + 			_model["attributes"]["menuTitle"];
-		setHtmlH = setHtmlH + 		'</a>';
-		setHtmlH = setHtmlH + 	'</li>';
-		$("#id-workList").append(setHtmlH);
-
-		// サイドメニューの作品一覧
-		let setHtmlS =	 		'<li class="class-side-nav-text">';
-		setHtmlS = setHtmlS +		'<a id=' + _model["attributes"]["id"] +' href=# data-url=' + _model["attributes"]["workUrl"] +' >';
-		setHtmlS = setHtmlS + 			_model["attributes"]["menuTitle"];
-		setHtmlS = setHtmlS + 		'</a>';
-		setHtmlS = setHtmlS + 	'</li>';
-		$("#id-sub").append(setHtmlS);
 
 	},
 
@@ -257,11 +229,10 @@ const viewSetting = Backbone.View.extend({
 const viewPickup = Backbone.View.extend({
 
 	// DOMエレメントを指定
-//	el_workList: '#id-workList',
-	el: '#element-id',
+	el: '#id-slider',
 
 	// テンプレートをコンパイルする
-//	compileTempWorkList: _.template($('#id-tempWorkList').html()),
+	compileTempPickup: _.template(_render("pickup")),
 
 	initialize: function () {
 		this.render();
@@ -272,18 +243,18 @@ const viewPickup = Backbone.View.extend({
 	 */
 	render: function () {
 
-		const that = this;
-
 		// PICK UP配置
 		this.collection.each(function (model, index) {
 
 			// PICK UP 表示
-			that.createPickup(model);
+			if(model["attributes"]["pickUpUrl"]){	// PICK UPアドレスが空白はスルー
+				$(this.el).append(this.compileTempPickup(model.toJSON()));
+			}
 
 		}, this);
 		
 		// PICK UP配置 完了後 スライダー初期設定
-		that.iniSlider();
+		this.iniSlider();
 
 	},
 
@@ -320,37 +291,7 @@ const viewPickup = Backbone.View.extend({
 			}]
 		});
 
-	},
-
-	/**
-	 * PICK UP配置
-	 */
-	createPickup: function(_model){
-
-		// PICK UPアドレスが空白はスルー
-		if(_model["attributes"]["pickUpUrl"]){
-
-			// PICK UP
-			let setHtmlP =	 		'<div>';
-			setHtmlP = setHtmlP + 		'<figure class="pick-up-title">';
-//			setHtmlP = setHtmlP + 			'<img id=' + _model["attributes"]["id"] +' data-lazy=' + _model["attributes"]["pickUpUrl"]  + ' href=# data-url=' + _model["attributes"]["workUrl"] + '>';
-			setHtmlP = setHtmlP + 			'<img id=' + _model["attributes"]["id"] +' src="../' + _model["attributes"]["pickUpUrl"]  + '" href=# data-url=' + _model["attributes"]["workUrl"] + '>';
-			setHtmlP = setHtmlP + 			'<figcaption>';
-			setHtmlP = setHtmlP + 				'<h2>';
-			setHtmlP = setHtmlP + 					_model["attributes"]["pickUpTitle"];
-			setHtmlP = setHtmlP + 				'</h2>';
-			setHtmlP = setHtmlP + 				'<p>';
-			setHtmlP = setHtmlP + 					_model["attributes"]["caption"];
-			setHtmlP = setHtmlP + 				'</p>';
-			setHtmlP = setHtmlP + 			'</figcaption>';
-			setHtmlP = setHtmlP + 			'<a id=' + _model["attributes"]["id"] +' data-url=' + _model["attributes"]["workUrl"] + '></a>';
-			setHtmlP = setHtmlP + 		'</figure>';
-			setHtmlP = setHtmlP + 	'</div>';
-			$("#id-slider").append(setHtmlP);
-
-		}
-
-	},
+	}
 
 });
 
@@ -359,8 +300,11 @@ const viewPickup = Backbone.View.extend({
  */
 const viewWorklist = Backbone.View.extend({
 
-	el: '#element-id',
-	
+	el: '#id-works',
+
+	// テンプレートをコンパイルする
+	compileTempworkList: _.template(_render("workList")),
+
 	initialize: function () {
 		this.render();
 	},
@@ -372,10 +316,7 @@ const viewWorklist = Backbone.View.extend({
 	
 		this.collection.each(function (model, index) {
 			// 作品一覧
-			let setHtmlP =	 		'<a class="class-workList" href="../' + model["attributes"]["url"] + '" data-title=' + model["attributes"]["subTitle"] + '">';
-			setHtmlP = setHtmlP + 		'<span>' + model["attributes"]["title"] + '</span>';
-			setHtmlP = setHtmlP + 	'</a>';
-			$("#id-works").append(setHtmlP);
+			$(this.el).append(this.compileTempworkList(model.toJSON()));
 		}, this);
 
 	},
