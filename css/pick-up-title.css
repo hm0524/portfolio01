@@ -41,7 +41,7 @@ figure.pick-up-title * {
 	transition: all 0.6s ease;
 }
 figure.pick-up-title img {
-	opacity: 1;
+/*	opacity: 1;	*/
 	width: 100%;
 }
 figure.pick-up-title:after,
