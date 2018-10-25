@@ -25,7 +25,7 @@ let listId;
 		).done(function(){
 
 			let setHtml = 		'<h4 class="entry-title">マイスタイル</h4>';
-			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0026.png" data-lazy-type="image" style="display: block;"></p>';
+			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0026.png" data-src="../img/j0026.png" class="lazyload"></p>';
 			$("#id_main").prepend(setHtml);
 
 			// IE対応

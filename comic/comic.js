@@ -25,7 +25,7 @@ let listId;
 		).done(function(){
 
 			let setHtml = 		'<h4 class="entry-title">縦読み漫画</h4>';
-			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0040.png" data-lazy-type="image" style="display: block;"></p>';
+			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0040.png" data-src="../img/j0040.png" class="lazyload"></p>';
 			$("#id_main").prepend(setHtml);
 
 			// IE対応

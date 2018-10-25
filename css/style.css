@@ -449,22 +449,10 @@ footer div {
 	margin: 0 auto;
 	max-width: 100%;
 	height: auto;
+	display: block;
 }
 
-/*
-.class-external-wrapper {
-	padding-bottom: 100%;
-	position: relative;
-}
-
-.class-external-wrapper iframe {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	border: none;
-}
-*/
-
+/* ――――― lazysizes ――――― */
 .lazyload,
 .lazyloading {
 	opacity: 0;

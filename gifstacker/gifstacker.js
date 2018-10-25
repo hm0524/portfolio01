@@ -25,7 +25,7 @@ let listId;
 		).done(function(){
 
 			let setHtml = 		'<h4 class="entry-title">GIFステッカー</h4>';
-			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0048.gif" data-lazy-type="image" style="display: block;"></p>';
+			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0048.gif" data-src="../img/j0048.gif" class="lazyload"></p>';
 			$("#id_main").prepend(setHtml);
 
 			// IE対応

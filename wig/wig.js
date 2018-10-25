@@ -25,7 +25,7 @@ let listId;
 		).done(function(){
 
 			let setHtml = 		'<h4 class="entry-title">-ウィッグの上手なかぶり方-</h4>';
-			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0032.png" data-lazy-type="image" style="display: block;"></p>';
+			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0032.png" data-src="../img/j0032.png" class="lazyload"></p>';
 			$("#id_main").prepend(setHtml);
 
 			// IE対応

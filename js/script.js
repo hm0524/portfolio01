@@ -355,8 +355,8 @@ const loadSetting = function(){
 	
 	let _data;
 
-	// 設定ファイル 読み込み
 	$.when(
+		// 設定ファイル 読み込み
 		$.getJSON('../data/setting.json')
 	)
 	.done(function(json){
@@ -377,7 +377,7 @@ const loadSetting = function(){
 		// 必ず実行
 
 		// Collectionインスタンス生成 【設定ファイル】
-		createInstanceSetting(_data)
+		createInstanceSetting(_data);
 
 		// Viewインスタンス生成 【設定ファイル】
 		const viewInstanceSetting = new viewSetting({
@@ -385,14 +385,18 @@ const loadSetting = function(){
 			collection:collectionInstanceSetting
 		});
 
-		// Viewインスタンス生成 【PICK UP配置】
-		const viewInstancePickup = new viewPickup({
-			// Collectionを渡す
-			collection:collectionInstanceSetting
-		});
-		
-		// localStorageに保存
-		setLocalStorage(collectionInstanceSetting);
+		// Homeのみ
+		if ( window.location.href.indexOf('home/index.html') != -1 ) {
+
+			// Viewインスタンス生成 【PICK UP配置】
+			const viewInstancePickup = new viewPickup({
+				// Collectionを渡す
+				collection:collectionInstanceSetting
+			});
+
+			// localStorageに保存
+			setLocalStorage(collectionInstanceSetting);
+		}
 
 		return defer.promise();
 
