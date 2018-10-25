@@ -376,28 +376,30 @@ const loadSetting = function(){
 	.always(function(){
 		// 必ず実行
 
-		// Collectionインスタンス生成 【設定ファイル】
-		createInstanceSetting(_data);
-
-		// Viewインスタンス生成 【設定ファイル】
-		const viewInstanceSetting = new viewSetting({
-			// Collectionを渡す
-			collection:collectionInstanceSetting
-		});
-
-		// Homeのみ
-		if ( window.location.href.indexOf('home/index.html') != -1 ) {
-
-			// Viewインスタンス生成 【PICK UP配置】
-			const viewInstancePickup = new viewPickup({
+		$.when(
+			// Collectionインスタンス生成 【設定ファイル】
+			createInstanceSetting(_data)
+		)
+		.done(function(){
+			// Viewインスタンス生成 【設定ファイル】
+			const viewInstanceSetting = new viewSetting({
 				// Collectionを渡す
 				collection:collectionInstanceSetting
 			});
 
+			// Homeのみ
+			if ( window.location.href.indexOf('home/index.html') != -1 ) {
+
+				// Viewインスタンス生成 【PICK UP配置】
+				const viewInstancePickup = new viewPickup({
+					// Collectionを渡す
+					collection:collectionInstanceSetting
+				});
+
 			// localStorageに保存
 			setLocalStorage(collectionInstanceSetting);
 		}
-
+})
 		return defer.promise();
 
 	});
