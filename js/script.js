@@ -399,7 +399,7 @@ const loadSetting = function(){
 			// localStorageに保存
 			setLocalStorage(collectionInstanceSetting);
 		}
-})
+	})
 		return defer.promise();
 
 	});
