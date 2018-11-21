@@ -239,9 +239,9 @@ const viewPickup = Backbone.View.extend({
 	// テンプレートをコンパイルする
 	compileTempPickup: _.template(_render("pickup")),
 
-	initialize: function () {
-		this.render();
-	},
+//	initialize: function () {
+//		this.render();
+//	},
 
 	/**
 	 * render
@@ -296,6 +296,10 @@ const viewPickup = Backbone.View.extend({
 			}]
 		});
 
+	},
+	
+	initialize: function () {
+		this.render();
 	}
 
 });
@@ -310,9 +314,9 @@ const viewWorklist = Backbone.View.extend({
 	// テンプレートをコンパイルする
 	compileTempworkList: _.template(_render("workList")),
 
-	initialize: function () {
-		this.render();
-	},
+//	initialize: function () {
+//		this.render();
+//	},
 	
 	/**
 	 * render
@@ -326,6 +330,9 @@ const viewWorklist = Backbone.View.extend({
 
 	},
 
+	initialize: function () {
+		this.render();
+	}
 });
 
 /**
