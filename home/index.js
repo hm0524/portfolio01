@@ -16,7 +16,7 @@
 	};
 
 	// メニュー配置
-	$('#id_menu').load('../temp_menu.html', function() {
+	$('#iHeader').load('../temp_menu.html', function() {
 
 		$.when(
 
@@ -26,7 +26,7 @@
 		).done(function(){
 		
 			// トップ配置
-			$('#id_main').load('../temp_top.html', function() {
+			$('#iMain').load('../temp_top.html', function() {
 
 				// IE対応
 				moveHeadWidth();
@@ -35,7 +35,7 @@
 				loadWorklist();
 
 				// フッタ 配置
-				$('#id_footer').load('../temp_footer.html', function() {
+				$('#iFooter').load('../temp_footer.html', function() {
 					// ページ内遷移
 					idTransition();
 				});

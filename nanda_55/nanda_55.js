@@ -15,7 +15,7 @@ let listId;
 	console.log(_localStorage[listId]);
 
 	// メニュー配置
-	$('#id_menu').load('../temp_menu.html', function() {
+	$('#iHeader').load('../temp_menu.html', function() {
 	
 		$.when(
 
@@ -38,13 +38,13 @@ let listId;
 			setHtml = setHtml + '<h4>クリエイター：神盾双月</h4>';
 			setHtml = setHtml + '<p><img src="http://static.cre-m.jp/wp-content/uploads/2015/05/nanda_icon.jpg" data-lazy-type="image" data-lazy-src="http://static.cre-m.jp/wp-content/uploads/2015/05/nanda_icon.jpg" alt="nanda_icon" width="100px" class="lazy alignnone size-full wp-image-6831 data-lazy-ready" style="display: block;"><noscript><img src="http://static.cre-m.jp/wp-content/uploads/2015/05/nanda_icon.jpg" alt="nanda_icon" width="100px" class="alignnone size-full wp-image-6831" /></noscript><br>池袋を拠点とするIT企業の中で、イラスト・WEBデザイン、Gifアニメ、Flashアニメ制作など色んなことしてます。<br>ライフワークはカラオケとサバゲです。</p>';
 			setHtml = setHtml + '</section>';
-			$("#id_main").prepend(setHtml);
+			$("#iMain").prepend(setHtml);
 
 			// IE対応
 			moveHeadWidth();
 
 			// フッタ 配置
-			$('#id_footer').load('../temp_footer.html');
+			$('#iFooter').load('../temp_footer.html');
 
 		});
 	});

@@ -43,8 +43,8 @@ const collectionDefine = Backbone.Collection.extend();
 const viewSetting = Backbone.View.extend({
 
 	// DOMエレメントを指定
-//	el: '#id-workList',
-	el: '#element-id',
+//	el: '#headerMenuWorkListContainer',
+	el: '#iElement',
 
 	// テンプレートをコンパイルする
 //	compileTempHeadMenu: _.template($('#temp_headMenu').html()),
@@ -55,19 +55,24 @@ const viewSetting = Backbone.View.extend({
 		this.render();
 		
 		const events = {
-            'click #id-siteName'		: '_onHomeBtn',			// ヘッダ [サイト名]
-            'click #id-menuHomeBtn'		: '_onHomeBtn',			// ヘッダ [Home]
-			'click #id-menuWorkListBtn'	: '_onWorkListBtn',		// ヘッダ [作品一覧]
-			'click #id-blogBtn'			: '_onblogBtn',			// ヘッダ [ブログ]
-			'click #id-enquiryBtn'		: '_onenquiryBtn',		// ヘッダ [お問い合わせ]
-			'click #sidbarToggle'		: '_onSidbarToggle',	// ヘッダ [Ξ]
-			'click #id-side-sub'		: '_onSideSub',			// サイド [作品一覧]
-			'click #id-side-nav a'		: '_onSidbarToggle',	// サイド <a>
-			'click #id-workList a'		: '_onWorkBtn',			// ヘッダ [作品一覧] <a>
-			'click #id-sub a'			: '_onWorkBtn',			// サイド [作品一覧] <a>
-			'click #id-slider img'		: '_onWorkBtn',			// PICK UP 画像 クリック
-			'click #id-slider a'		: '_onWorkBtn',			// PICK UP タイトル クリック
-			'click #id-goTop'			: '_onTopBtn'			// [Λ]
+			'click #siteName'						: '_onHomeBtn',				// ヘッダ [サイト名]
+			'click #headerMenuHomeBtn'				: '_onHomeBtn',				// ヘッダ [Home]
+			'click #headerMenuWorkListBtn'			: '_onWorkListBtnHeader',	// ヘッダ [作品一覧]
+			'click #headerMenuBlogBtn'				: '_onBlogBtn',				// ヘッダ [ブログ]
+			'click #headerMenuContactBtn'			: '_onContactBtn',			// ヘッダ [お問い合わせ]
+			'click #headerMenuToggleBtn'			: '_onToggleBtn',			// ヘッダ [Ξ]
+			
+			'click #sideMenuContainer a'			: '_onToggleBtn',			// サイド <a>
+			'click #sideMenuHomeBtn'				: '_onHomeBtn',				// サイド [Home]
+			'click #sideMenuWorkListBtn'			: '_onWorkListBtnSide',		// サイド [作品一覧]
+			'click #sideMenuBlogBtn'				: '_onBlogBtn',				// サイド [ブログ]
+			'click #sideMenuContactBtn'				: '_onContactBtn',			// サイド [お問い合わせ]
+			
+			'click #headerMenuWorkListContainer a'	: '_onWorkBtn',				// ヘッダ [作品一覧] <a>
+			'click #sideMenuWorkListContainer a'	: '_onWorkBtn',				// サイド [作品一覧] <a>
+			'click #pickupSlider img'				: '_onWorkBtn',				// PICK UP 画像 クリック
+			'click #pickupSlider a'					: '_onWorkBtn',				// PICK UP タイトル クリック
+			'click #topBtn'							: '_onTopBtn'				// [Λ]
         };
         this.delegateEvents(events);
 	},
@@ -81,8 +86,8 @@ const viewSetting = Backbone.View.extend({
 		this.collection.each(function (model, index) {
 
 //			$(this.el).append(this.compileTempHeadMenu(model.toJSON()));
-			$("#id-workList").append(this.compileTempHeadMenu(model.toJSON()));
-			$("#id-sub").append(this.compileTempHeadMenu(model.toJSON()));
+			$("#headerMenuWorkListContainer").append(this.compileTempHeadMenu(model.toJSON()));
+			$("#sideMenuWorkListContainer").append(this.compileTempHeadMenu(model.toJSON()));
 
 		}, this);
 
@@ -124,7 +129,7 @@ const viewSetting = Backbone.View.extend({
 		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
 
 		if (_fileName === "index" ) {
-			this.linkInThePageMove('#element-id');
+			this.linkInThePageMove('#iElement');
 		} else {
 			window.location.href = localStorage.getItem('homeUrl');
 		}
@@ -135,57 +140,57 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onTopBtn: function(ev){
-		this.linkInThePageMove('#element-id');
+		this.linkInThePageMove('#iElement');
 	},
 	
 	/**
-	 * [作品一覧]ボタンクリック
+	 * ヘッダ[作品一覧]ボタンクリック
 	 * @param ev
 	 */
-	_onWorkListBtn: function(ev){
-		this.linkInThePage('#id-work-list-title');
+	_onWorkListBtnHeader: function(ev){
+		this.linkInThePage('#titleWorkList');
 	},
 	
 	/**
 	 * [ブログ]ボタンクリック
 	 * @param ev
 	 */
-	_onblogBtn: function(ev){
-		this.linkInThePage('#id-blog');
+	_onBlogBtn: function(ev){
+		this.linkInThePage('#titleBlog');
 	},
 	
 	/**
 	 * [お問い合わせ]ボタンクリック
 	 * @param ev
 	 */
-	_onenquiryBtn: function(ev){
-		this.linkInThePage('#id-enquiry');
+	_onContactBtn: function(ev){
+		this.linkInThePage('#titleContact');
 	},
 	
 	/**
 	 * [Ξ]ボタンクリック
 	 * @param ev
 	 */
-	_onSidbarToggle: function(ev){
+	_onToggleBtn: function(ev){
 
 		let exclusion = ev["target"]["id"];
 
 		// 作品一覧は除外
-		if ( exclusion !== 'id-side-sub' ) {
+		if ( exclusion !== 'sideMenuWorkListBtn' ) {
 
 			// 作品一覧のアイコンも除外
-			if ( exclusion !== 'id-sub-toggle' ) {
+			if ( exclusion !== 'sideMenuWorkListToggle' ) {
 
 				// アイコン変更
-				if ( $("#id-side-nav").attr('aria-expanded') === "true" ) {
+				if ( $("#sideMenuContainer").attr('aria-expanded') === "true" ) {
 					// [×] → [Ξ]
-					$('#sidbarToggle span').removeClass('fa-times');
-					$('#sidbarToggle span').addClass('fa-bars');
-					$("#id-side-nav").collapse('hide');
+					$('#headerMenuToggleBtn span').removeClass('fa-times');
+					$('#headerMenuToggleBtn span').addClass('fa-bars');
+					$("#sideMenuContainer").collapse('hide');
 				} else {
 					// [Ξ] → [×]
-					$('#sidbarToggle span').removeClass('fa-bars');
-					$('#sidbarToggle span').addClass('fa-times');
+					$('#headerMenuToggleBtn span').removeClass('fa-bars');
+					$('#headerMenuToggleBtn span').addClass('fa-times');
 				}
 			}
 		}
@@ -193,20 +198,20 @@ const viewSetting = Backbone.View.extend({
 
 
 	/**
-	 * [作品一覧]ボタンクリック
+	 * サイド[作品一覧]ボタンクリック
 	 * @param ev
 	 */
-	_onSideSub: function(ev){
+	_onWorkListBtnSide: function(ev){
 
 		// アイコン変更
-		if ( $("#id-sub").attr('aria-expanded') === "true" ) {
+		if ( $("#sideMenuWorkListContainer").attr('aria-expanded') === "true" ) {
 			// [↓] → [→]
-			$('#id-sub-toggle').removeClass('fa-chevron-down');
-			$('#id-sub-toggle').addClass('fa-chevron-right');
+			$('#sideMenuWorkListToggle').removeClass('fa-chevron-down');
+			$('#sideMenuWorkListToggle').addClass('fa-chevron-right');
 		} else {
 			// [→] → [↓]
-			$('#id-sub-toggle').removeClass('fa-chevron-right');
-			$('#id-sub-toggle').addClass('fa-chevron-down');
+			$('#sideMenuWorkListToggle').removeClass('fa-chevron-right');
+			$('#sideMenuWorkListToggle').addClass('fa-chevron-down');
 		}
 
 	},
@@ -229,7 +234,7 @@ const viewSetting = Backbone.View.extend({
 const viewPickup = Backbone.View.extend({
 
 	// DOMエレメントを指定
-	el: '#id-slider',
+	el: '#pickupSlider',
 
 	// テンプレートをコンパイルする
 	compileTempPickup: _.template(_render("pickup")),
@@ -300,7 +305,7 @@ const viewPickup = Backbone.View.extend({
  */
 const viewWorklist = Backbone.View.extend({
 
-	el: '#id-works',
+	el: '#workListContainer',
 
 	// テンプレートをコンパイルする
 	compileTempworkList: _.template(_render("workList")),

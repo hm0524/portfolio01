@@ -2,14 +2,14 @@
 			<div class="container cTable navbar-fixed-top headerMenu">
 
 <!-- ▼▼▼▼▼ xs(767px以下) ▼▼▼▼▼ -->
-				<div id="id-btn-toggle" class="cTable__cell">
-					<button id="sidbarToggle" class="btn headerMenu__buttonToggle" data-toggle="collapse" data-target=".target"><span class="fa fa-bars"></span></button>
+				<div id="headerMenuToggleBtnWrapper" class="cTable__cell">
+					<button id="headerMenuToggleBtn" class="btn headerMenu__buttonToggle" data-toggle="collapse" data-target=".target"><span class="fa fa-bars"></span></button>
 				</div>
 <!-- ▲▲▲▲▲ xs(767px以下) ▲▲▲▲▲ -->
 
 				<div class="cTable__cell">
 					<h4 class="headerMenu__title">
-						<a id="id-siteName" href="#">
+						<a id="siteName" href="#">
 							WEBだからこその漫画の可能性
 						</a>
 					</h4>
@@ -17,21 +17,21 @@
 
 				<div class="cTable__cell headerMenu__buttonContainer hidden-xs">
 
-					<button class="btn headerMenu__buttonContainer__button" id="id-menuHomeBtn"><span class="fa fa-home"></span>Home</button>
+					<button class="btn headerMenu__buttonContainer__button" id="headerMenuHomeBtn"><span class="fa fa-home"></span>Home</button>
 
 					<div class="btn-group">
-						<button class="btn headerMenu__buttonContainer__button" id="id-menuWorkListBtn"><span class="fa fa-list"></span>作品一覧</button>
+						<button class="btn headerMenu__buttonContainer__button" id="headerMenuWorkListBtn"><span class="fa fa-list"></span>作品一覧</button>
 						<button class="btn headerMenu__buttonContainer__button dropdown-toggle" data-toggle="dropdown">
 							<span class="fa fa-caret-down"></span>
 						</button>
 
 						<!-- ヘッダメニューの作品一覧 -->
-						<ul id="id-workList" class="dropdown-menu"></ul>
+						<ul id="headerMenuWorkListContainer" class="dropdown-menu"></ul>
 
 					</div>
 
-					<button class="btn headerMenu__buttonContainer__button" id="id-blogBtn"><span class="fa fa-pencil-square-o"></span>ブログ</button>
-					<button class="btn headerMenu__buttonContainer__button" id="id-enquiryBtn"><span class="fa fa-envelope"></span>お問い合わせ</button>
+					<button class="btn headerMenu__buttonContainer__button" id="headerMenuBlogBtn"><span class="fa fa-pencil-square-o"></span>ブログ</button>
+					<button class="btn headerMenu__buttonContainer__button" id="headerMenuContactBtn"><span class="fa fa-envelope"></span>お問い合わせ</button>
 
 				</div>
 
@@ -41,21 +41,21 @@
 			<nav>
 
 <!-- ▼▼▼▼▼ xs(767px以下) ▼▼▼▼▼ -->
-				<div class="collapse target" id="id-side-nav">
+				<div class="collapse target" id="sideMenuContainer">
 					<ul class="nav">
-						<li><a href="#" id="id-menuHomeBtn">Home</a></li>
+						<li><a href="#" id="sideMenuHomeBtn">Home</a></li>
 						<li>
-							<a id="id-side-sub" data-toggle="collapse" href=".collapse-menu">
+							<a id="sideMenuWorkListBtn" data-toggle="collapse" href=".collapse-menu">
 								作品一覧
-								<span id="id-sub-toggle" class="fa fa-chevron-right class-side-nav-text"></span>
+								<span id="sideMenuWorkListToggle" class="fa fa-chevron-right class-side-nav-text"></span>
 							</a>
 
 							<!-- サイドメニューの作品一覧 -->
-							<ul id="id-sub" class="collapse-menu collapse nav" aria-expanded="false" style="height: 0px;"></ul>
+							<ul id="sideMenuWorkListContainer" class="collapse-menu collapse nav" aria-expanded="false" style="height: 0px;"></ul>
 
 						</li>
-						<li><a href="#" id="id-blogBtn">ブログ</a></li>
-						<li><a href="#" id="id-enquiryBtn">お問い合わせ</a></li>
+						<li><a href="#" id="sideMenuBlogBtn">ブログ</a></li>
+						<li><a href="#" id="sideMenuContactBtn">お問い合わせ</a></li>
 					</ul>
 				</div>
 <!-- ▲▲▲▲▲ xs(767px以下) ▲▲▲▲▲ -->

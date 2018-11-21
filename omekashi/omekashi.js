@@ -15,7 +15,7 @@ let listId;
 	console.log(_localStorage[listId]);
 
 	// メニュー配置
-	$('#id_menu').load('../temp_menu.html', function() {
+	$('#iHeader').load('../temp_menu.html', function() {
 	
 		$.when(
 
@@ -26,13 +26,13 @@ let listId;
 
 			let setHtml = 		'<h4 class="entry-title">おめかしスタイル</h4>';
 			setHtml = setHtml + '<p class="cMain__imgWrap"><img src="../img/j0006.jpg" data-src="../img/j0006.jpg" class="lazyload"></p>';
-			$("#id_main").prepend(setHtml);
+			$("#iMain").prepend(setHtml);
 
 			// IE対応
 			moveHeadWidth();
 
 			// フッタ 配置
-			$('#id_footer').load('../temp_footer.html');
+			$('#iFooter').load('../temp_footer.html');
 
 		});
 	});
