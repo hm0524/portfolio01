@@ -264,14 +264,14 @@ const viewPickup = Backbone.View.extend({
 	iniSlider: function(){
 
 		// 画像がlazyLoadされる度に呼ばれるイベント
-		$('.class-slider').on('lazyLoaded', function(event, slick, image, imageSource){
+		$('.cMain__pickUp__slider').on('lazyLoaded', function(event, slick, image, imageSource){
 
 			// 作品一覧 縦位置調整
 			workListPaddingTop(image[0].height);
 
 		});
 
-		$('.class-slider').slick({
+		$('.cMain__pickUp__slider').slick({
 			accessibility: false,	// 矢印キーでスライドを切り替える
 			adaptiveHeight: false,	// スライドの高さが違うときに自動調整する
 			autoplay: true,			// 自動再生する
@@ -486,8 +486,8 @@ const moveHeadWidth = function(){
 	const userAgent = window.navigator.userAgent.toLowerCase();
 	if(userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
 		const winWidth = $(window).width();
-		let elementWidth = $('.class-menu-bar').width() + 30;
-		$('.class-menu-bar').css('left', (winWidth - elementWidth) / 2);
+		let elementWidth = $('.headerMenu').width() + 30;
+		$('.headerMenu').css('left', (winWidth - elementWidth) / 2);
 	}
 
 };

@@ -1,7 +1,6 @@
 * {
 	margin: 0;
 	padding: 0;
-/*	height: 100%;	*/
 }
 
 html {
@@ -16,9 +15,7 @@ body {
 	color: #333;
 	background-color: #fff;
 	height: 100%;
-/*	width: 100%;	*/
 	max-width: 960px;
-/*	text-align: center;	*/
 	margin: 0 auto;
 	background-color: #fff;
 }
@@ -33,54 +30,258 @@ header {
 }
 
 article {
-/*	width: 100vw;	*/
 	max-width: 960px;
 }
 
-.class-menu-bar {
+nav {
+	position: fixed;
+	top: 50px;
+	background-color: rgba(66,66,66,0.6);
+	height: auto;
+}
+
+nav a {
+	color: #fff;
+}
+
+footer {
+}
+
+footer div {
+	text-align: center;
+	background-color: #7F7F7F;
+	color:#fff;
+}
+
+/* ――――― ――――― ――――― */
+
+header .cTable {
+	width: 100%;
+	display: table;
+	height: 50px;
+	background-color: #FEF778;
+	transform: translate3d(0, 0, 0);
+	border-bottom: 3px solid #FBA746;
+}
+
+footer .cTable {
+	width:100%;
+	display: table;
+	margin:0 auto;
+	height: 100px;
+	padding: 10px;
+}
+
+.cTable__cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+/* 横幅を300pxに固定して真ん中に表示 */
+ul.circle_group{
+	width:300px;
+	margin:auto;
+	list-style: none;
+	padding:0;
+}
+
+/* ――――― ――――― ――――― */
+
+/* ――――― ヘッダーメニュー ――――― */
+.headerMenu {
 	max-width: 960px;
 }
 
-.class-main {
+/* ――――― ヘッダーメニュー sp トグルボタン ――――― */
+.headerMenu__buttonToggle {
+	color: #000;
+	background-color: #fff;
+	border-color: none;
+}
+.headerMenu__buttonToggle:hover {
+	color: #ef4123;
+	background-color: #ffffdf;
+	border-color: none;
+}
+.headerMenu__buttonToggle:active,
+.headerMenu__buttonToggle:active:hover {
+	color: #fff;
+	background-color: #ef4123;
+	border-color: #ef4123;
+}
+.headerMenu__buttonToggle:focus,
+.headerMenu__buttonToggle:active:focus {
+	color: #000;
+	background-color: #fff;
+	border-color: #ef4123;
+}
+
+/* ――――― ヘッダーメニュー タイトル ――――― */
+.headerMenu__title {
+	margin: auto;
+}
+
+.headerMenu__title a {
+	color: #333;
+}
+
+/* ――――― ヘッダーメニュー pc ボタン ――――― */
+.headerMenu__buttonContainer {
+	text-align: right;
+}
+
+.headerMenu__buttonContainer .fa {
+	padding-right: 0.2em;
+}
+
+.headerMenu__buttonContainer__button {
+	color: #000;
+	background-color: #fff;
+	border: none;
+}
+.headerMenu__buttonContainer__button:hover {
+	color: #ef4123;
+	background-color: #ffffdf;
+	border-color: #ef4123;
+}
+.headerMenu__buttonContainer__button:active,
+.headerMenu__buttonContainer__button:active:hover {
+	color: #fff;
+	background-color: #ef4123;
+	border-color: #ef4123;
+}
+.headerMenu__buttonContainer__button:focus,
+.headerMenu__buttonContainer__button:active:focus {
+	color: #000;
+	background-color: #fff;
+	border-color: #ef4123;
+}
+
+/* ――――― Home ――――― */
+.cMain {
 	position: absolute;
 	z-index: 1000;
 	top: 50px;
 	background-color: #FFFDE1;
+	max-width: 960px;
+	width: 100%;
 }
 
+/* ――――― Home TOPページ ――――― */
+.cMain__top img {
+	width: 100%;
+}
 
-.class-pick-up {
+/* ――――― Home PICK UP ――――― */
+.cMain__pickUp {
 	position: absolute;
 	width: 100%;
-
 }
 
-.class-work-list {
+/* ――――― Home PICK UP スライダー ――――― */
+.cMain__pickUp__slider {
+	display:none;
+}
+.cMain__pickUp__slider.slick-initialized {
+	display: block;
+}
+
+.cMain__pickUp__slider__title {
+	margin: 0 auto !important;
+	float: none !important;
+}
+
+/* ――――― Home 作品一覧 ――――― */
+.cMain__workList {
 	padding-top: 375px;
 }
 
-
-
-header .class-table {
-	width: 100%;
-	display: table;
-	height: 50px;
-/*		height: 6vh;	*/
-	background-color: #FEF778;
-	transform: translate3d(0, 0, 0);
-
-
-/*	position: absolute;	*/
-/*	top: 0;
-	left: 0;
-	z-index: 1;
-
-	background: linear-gradient(to bottom, #a6d900 0%, #ff4454 100%);	*/
-/*	opacity: 0.5;	*/
-/*	animation: huerotator 3s infinite alternate;	*/
-
-	border-bottom: 3px solid #FBA746;
+.cMain__workList__container {
+	margin: 0;
 }
+
+.cMain__workList__container__works {
+	 text-align: center;
+}
+
+/* ――――― Home ブログエリア ――――― */
+.cMain__blog {
+	padding-top: 50px;
+	margin-top: -50px;
+}
+
+/* ――――― ブログの外枠 ――――― */
+.cMain__blog__embedWrapper {
+	width: 100%;
+	height: 0;
+	padding-bottom: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.cMain__blog__embedWrapper iframe {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: none;
+}
+
+/* ――――― Home お問い合わせ ――――― */
+.cMain__contact {
+}
+
+/* ――――― サブ画面 画像 ――――― */
+.cMain__imgWrap img {
+	margin: 0 auto;
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* ――――― ――――― ――――― */
+
+
+/* ――――― サブタイトル ――――― */
+.subTitle {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	text-align: center;		/* for no-flexbox browsers */
+	padding-top: 60px;
+	margin-top: -60px;
+}
+
+.subTitle:before,
+.subTitle:after {
+	border-top: 1px solid;
+	content: "";
+	display: inline;		/* for IE */
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex: 1;
+	flex-grow: 1;
+}
+
+.subTitle:before {
+	margin-right: 0.5em;
+}
+
+.subTitle:after {
+	margin-left: 0.5em;
+}
+
+/* ――――― ――――― ――――― */
 
 @keyframes huerotator {
 	0% {
@@ -92,49 +293,6 @@ header .class-table {
 		-webkit-filter: hue-rotate(360deg);
 		filter: hue-rotate(360deg);
 	}
-}
-
-
-.class-cell {
-	display: table-cell;
-	vertical-align: middle;
-}
-
-.header-title {
-	margin: auto;
-}
-
-.header-title a {
-	color: #333;
-}
-
-.header-button {
-	text-align: right;
-}
-
-
-.btn-default {
-	color: #000;
-	background-color: #fff;
-	border: none;
-/*	border-color: #FBA746;	*/
-}
-.btn-default:hover {
-	color: #ef4123;
-	background-color: #ffffdf;
-	border-color: #ef4123;
-}
-.btn-default:active,
-.btn-default:active:hover {
-	color: #fff;
-	background-color: #ef4123;
-	border-color: #ef4123;
-}
-.btn-default:focus,
-.btn-default:active:focus {
-	color: #000;
-	background-color: #fff;
-	border-color: #ef4123;
 }
 
 @media screen and (min-width: 768px) {
@@ -150,7 +308,7 @@ header .class-table {
 	}
 
 	/* スライド画像のサイズ */
-	.class-pick-up img {
+	.cMain__pickUp img {
 		width: 25vw;
 	}
 
@@ -159,7 +317,7 @@ header .class-table {
 @media screen and (max-width: 992px) {
 
 	/* スライド画像のサイズ */
-	.class-pick-up img {
+	.cMain__pickUp img {
 		width: 50vw;
 	}
 }
@@ -167,37 +325,9 @@ header .class-table {
 @media screen and (max-width: 768px) {
 
 	/* スライド画像のサイズ */
-	.class-pick-up img {
+	.cMain__pickUp img {
 		width: 100vw;
 	}
-}
-
-.class-btn-toggle {
-	color: #000;
-	background-color: #fff;
-	border-color: none;
-}
-.class-btn-toggle:hover {
-	color: #ef4123;
-	background-color: #ffffdf;
-	border-color: none;
-}
-.class-btn-toggle:active,
-.class-btn-toggle:active:hover {
-	color: #fff;
-	background-color: #ef4123;
-	border-color: #ef4123;
-}
-.class-btn-toggle:focus,
-.class-btn-toggle:active:focus {
-	color: #000;
-	background-color: #fff;
-	border-color: #ef4123;
-}
-
-.pick-up-title {
-	margin: 0 auto !important;
-	float: none !important;
 }
 
 /* ――――― サイドメニュー ――――― */
@@ -207,72 +337,6 @@ header .class-table {
 
 #id-sub li {
 	text-indent: 1em;
-}
-
-.header-button .fa {
-	padding-right: 0.2em;
-}
-
-
-nav {
-	position: fixed;
-	top: 50px;
-	background-color: rgba(66,66,66,0.6);
-/*	width: 60%;	*/
-	height: auto;
-}
-
-nav a {
-	color: #fff;
-}
-
-/* ――――― TOPページ ――――― */
-.class-top img {
-/*	width: 100vw;	*/
-	width: 100%;
-}
-
-/* ――――― サブタイトル ――――― */
-.class-sub-title {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	-ms-flex-align: center;
-	align-items: center;
-	text-align: center;		/* for no-flexbox browsers */
-	padding-top: 60px;
-	margin-top: -60px;
-}
-
-.class-sub-title:before,
-.class-sub-title:after {
-	border-top: 1px solid;
-	content: "";
-	display: inline;		/* for IE */
-	-webkit-box-flex: 1;
-	-webkit-flex-grow: 1;
-	-ms-flex: 1;
-	flex-grow: 1;
-}
-
-.class-sub-title:before {
-	margin-right: 0.5em;
-}
-
-.class-sub-title:after {
-	margin-left: 0.5em;
-}
-
-/* ――――― 作品一覧 ――――― */
-.class-work-list-container {
-	margin: 0;
-}
-
-.class-works {
-	 text-align: center;
 }
 
 /* ――――― sns アイコン ――――― */
@@ -331,14 +395,6 @@ nav a {
 	opacity: 0.5;
 }
 
-/* 横幅を300pxに固定して真ん中に表示 */
-ul.circle_group{
-	width:300px;
-	margin:auto;
-	list-style: none;
-	padding:0;
-}
-
 /* アイコン毎の配色と配置 */
 .sns_circle.feedly{
 	background-color: #6CC655;
@@ -378,78 +434,6 @@ ul.circle_group{
 
 .sns_circle.arrow{
 	background-color: #FBA746;
-}
-
-
-
-/* ――――― ブログの外枠 ――――― */
-.embed-wrapper {
-	width: 100%;
-	height: 0;
-	padding-bottom: 100%;
-	position: relative;
-	top: 0;
-	left: 0;
-}
-
-/* ――――― ブログエリア ――――― */
-.class-blog {
-	padding-top: 50px;
-	margin-top: -50px;
-}
-
-.embed-wrapper iframe {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	border: none;
-}
-
-
-footer .class-table {
-	width:100%;
-	display: table;
-	margin:0 auto;
-	height: 100px;
-	padding: 10px;
-}
-
-footer {
-
-}
-
-footer div {
-	text-align: center;
-	background-color: #7F7F7F;
-	color:#fff;
-}
-
-
-/* ――――― PICK UP ――――― */
-.class-slider {
-	display:none;
-}
-.class-slider.slick-initialized {
-	display: block;
-}
-
-
-.class-main {
-	max-width: 960px;
-	width: 100%;
-}
-
-
-/* ――――― 作品一覧 ――――― */
-.imgCenter img{
-	margin: 0 auto;
-	max-width: 100%;
-	height: auto;
-	display: block;
 }
 
 /* ――――― lazysizes ――――― */

@@ -25,7 +25,7 @@ let listId;
 		).done(function(){
 
 			let setHtml = 		'<h4 class="entry-title">おめかしスタイル</h4>';
-			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0006.jpg" data-src="../img/j0006.jpg" class="lazyload"></p>';
+			setHtml = setHtml + '<p class="cMain__imgWrap"><img src="../img/j0006.jpg" data-src="../img/j0006.jpg" class="lazyload"></p>';
 			$("#id_main").prepend(setHtml);
 
 			// IE対応
