@@ -248,7 +248,7 @@ const viewPickup = Backbone.View.extend({
 		$('.cMain__pickUp__slider').on('lazyLoaded', function(event, slick, image, imageSource){
 
 			// 作品一覧 縦位置調整
-			workListPaddingTop(image[0].height);
+//			workListPaddingTop(image[0].height);
 
 		});
 
