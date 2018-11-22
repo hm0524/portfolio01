@@ -240,26 +240,6 @@ const viewPickup = Backbone.View.extend({
 	compileTempPickup: _.template(_render("pickup")),
 
 	/**
-	 * render
-	 */
-	render: function () {
-
-		// PICK UP配置
-		this.collection.each(function (model, index) {
-
-			// PICK UP 表示
-			if(model["attributes"]["pickUpUrl"]){	// PICK UPアドレスが空白はスルー
-				$(this.el).append(this.compileTempPickup(model.toJSON()));
-			}
-
-		}, this);
-		
-		// PICK UP配置 完了後 スライダー初期設定
-		this.iniSlider();
-
-	},
-
-	/**
 	 * スライダー初期設定
 	 */
 	iniSlider: function(){
@@ -293,7 +273,28 @@ const viewPickup = Backbone.View.extend({
 		});
 
 	},
-	
+
+	/**
+	 * render
+	 */
+	render: function () {
+
+		// PICK UP配置
+		this.collection.each(function (model, index) {
+
+			// PICK UP 表示
+			if(model["attributes"]["pickUpUrl"]){	// PICK UPアドレスが空白はスルー
+				$(this.el).append(this.compileTempPickup(model.toJSON()));
+//				$("#pickupSlider").append(this.compileTempPickup(model.toJSON()));
+			}
+
+		}, this);
+		
+		// PICK UP配置 完了後 スライダー初期設定
+		this.iniSlider();
+
+	},
+
 	initialize: function () {
 		this.render();
 	}
@@ -317,7 +318,8 @@ const viewWorklist = Backbone.View.extend({
 	
 		this.collection.each(function (model, index) {
 			// 作品一覧
-			$(this.el).append(this.compileTempworkList(model.toJSON()));
+//			$(this.el).append(this.compileTempworkList(model.toJSON()));
+			$("#workListContainer").append(this.compileTempworkList(model.toJSON()));
 		}, this);
 
 	},
