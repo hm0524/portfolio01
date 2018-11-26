@@ -245,12 +245,12 @@ const viewPickup = Backbone.View.extend({
 	iniSlider: function(){
 
 		// 画像がlazyLoadされる度に呼ばれるイベント
-		$('.cMain__pickUp__slider').on('lazyLoaded', function(event, slick, image, imageSource){
+//		$('.cMain__pickUp__slider').on('lazyLoaded', function(event, slick, image, imageSource){
 
-			// 作品一覧 縦位置調整
+//			// 作品一覧 縦位置調整
 //			workListPaddingTop(image[0].height);
 
-		});
+//		});
 
 		$('.cMain__pickUp__slider').slick({
 			accessibility: false,	// 矢印キーでスライドを切り替える
