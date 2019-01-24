@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Model定義 【設定ファイル】
@@ -439,6 +440,7 @@ const loadWorklist = function(){
 		});
 };
 
+let collectionInstanceWorklist;
 /**
  * インスタンス生成 【作品一覧ファイル】
  */
