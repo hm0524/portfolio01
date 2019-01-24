@@ -37,6 +37,7 @@ const modelWorklist = Backbone.Model.extend({
  * Collection定義
  */
 const collectionDefine = Backbone.Collection.extend();
+const collectionDefine2 = Backbone.Collection.extend();
 
 /**
  * View定義 【設定ファイル】
@@ -452,7 +453,7 @@ const loadWorklist = function(){
 const createInstanceWorklist = function(_json){
 
 	// Collectionインスタンス生成
-	collectionInstanceWorklist = new collectionDefine();
+	collectionInstanceWorklist = new collectionDefine2();
 
 	$.each(_json, function(index, element) {
 		collectionInstanceWorklist.add(new Backbone.Model(element));
