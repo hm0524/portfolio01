@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * Model定義 【設定ファイル】
