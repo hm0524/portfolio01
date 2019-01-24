@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Model定義 【設定ファイル】
@@ -51,9 +52,9 @@ const viewSetting = Backbone.View.extend({
 	compileTempHeadMenu: _.template(_render("headMenu")),
 
 	initialize: function () {
-	
+
 		this.render();
-		
+
 		const events = {
 			'click #siteName'						: '_onHomeBtn',				// ヘッダ [サイト名]
 			'click #headerMenuHomeBtn'				: '_onHomeBtn',				// ヘッダ [Home]
@@ -61,13 +62,13 @@ const viewSetting = Backbone.View.extend({
 			'click #headerMenuBlogBtn'				: '_onBlogBtn',				// ヘッダ [ブログ]
 			'click #headerMenuContactBtn'			: '_onContactBtn',			// ヘッダ [お問い合わせ]
 			'click #headerMenuToggleBtn'			: '_onToggleBtn',			// ヘッダ [Ξ]
-			
+
 			'click #sideMenuContainer a'			: '_onToggleBtn',			// サイド <a>
 			'click #sideMenuHomeBtn'				: '_onHomeBtn',				// サイド [Home]
 			'click #sideMenuWorkListBtn'			: '_onWorkListBtnSide',		// サイド [作品一覧]
 			'click #sideMenuBlogBtn'				: '_onBlogBtn',				// サイド [ブログ]
 			'click #sideMenuContactBtn'				: '_onContactBtn',			// サイド [お問い合わせ]
-			
+
 			'click #headerMenuWorkListContainer a'	: '_onWorkBtn',				// ヘッダ [作品一覧] <a>
 			'click #sideMenuWorkListContainer a'	: '_onWorkBtn',				// サイド [作品一覧] <a>
 			'click #pickupSlider img'				: '_onWorkBtn',				// PICK UP 画像 クリック
@@ -124,7 +125,7 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onHomeBtn: function(ev){
-		
+
 		let NowUrl = window.location.href;
 		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
 
@@ -142,7 +143,7 @@ const viewSetting = Backbone.View.extend({
 	_onTopBtn: function(ev){
 		this.linkInThePageMove('#iElement');
 	},
-	
+
 	/**
 	 * ヘッダ[作品一覧]ボタンクリック
 	 * @param ev
@@ -150,7 +151,7 @@ const viewSetting = Backbone.View.extend({
 	_onWorkListBtnHeader: function(ev){
 		this.linkInThePage('#titleWorkList');
 	},
-	
+
 	/**
 	 * [ブログ]ボタンクリック
 	 * @param ev
@@ -158,7 +159,7 @@ const viewSetting = Backbone.View.extend({
 	_onBlogBtn: function(ev){
 		this.linkInThePage('#titleBlog');
 	},
-	
+
 	/**
 	 * [お問い合わせ]ボタンクリック
 	 * @param ev
@@ -166,7 +167,7 @@ const viewSetting = Backbone.View.extend({
 	_onContactBtn: function(ev){
 		this.linkInThePage('#titleContact');
 	},
-	
+
 	/**
 	 * [Ξ]ボタンクリック
 	 * @param ev
@@ -222,7 +223,7 @@ const viewSetting = Backbone.View.extend({
 	 */
 	_onWorkBtn: function(ev){
 		let _target = ev["target"];
-		let _id =  $(_target).attr("id"); 
+		let _id =  $(_target).attr("id");
 		window.location.href = $(_target).data("url") + "?id=" + _id;
 	}
 
@@ -289,7 +290,7 @@ const viewPickup = Backbone.View.extend({
 			}
 
 		}, this);
-		
+
 		// PICK UP配置 完了後 スライダー初期設定
 		this.iniSlider();
 
@@ -315,7 +316,7 @@ const viewWorklist = Backbone.View.extend({
 	 * render
 	 */
 	render: function () {
-	
+
 		this.collection.each(function (model, index) {
 			// 作品一覧
 //			$(this.el).append(this.compileTempworkList(model.toJSON()));
@@ -358,7 +359,7 @@ const createInstanceSetting = function(_json){
 const loadSetting = function(){
 
 	let defer = $.Deferred();
-	
+
 	let _data;
 
 	$.when(
@@ -441,7 +442,7 @@ const loadWorklist = function(){
 				// Collectionを渡す
 				collection:collectionInstanceWorklist
 			});
-			
+
 		});
 };
 
@@ -464,7 +465,7 @@ const createInstanceWorklist = function(_json){
  */
 var tmpl_cache;
 function _render(tmpl_name) {
-	if ( !tmpl_cache ) { 
+	if ( !tmpl_cache ) {
 		tmpl_cache = {};
 	}
 	if ( ! tmpl_cache[tmpl_name] ) {
