@@ -1,3 +1,4 @@
+'use strict';
 
 /**
  * Model定義 【設定ファイル】
@@ -51,9 +52,9 @@ const viewSetting = Backbone.View.extend({
 	compileTempHeadMenu: _.template(_render("headMenu")),
 
 	initialize: function () {
-	
+
 		this.render();
-		
+
 		const events = {
             'click #id-siteName'		: '_onHomeBtn',			// ヘッダ [サイト名]
             'click #id-menuHomeBtn'		: '_onHomeBtn',			// ヘッダ [Home]
@@ -119,7 +120,7 @@ const viewSetting = Backbone.View.extend({
 	 * @param ev
 	 */
 	_onHomeBtn: function(ev){
-		
+
 		let NowUrl = window.location.href;
 		let _fileName = NowUrl.match(".+/(.+?)\.[a-z]+([\?#;].*)?$")[1];
 
@@ -137,7 +138,7 @@ const viewSetting = Backbone.View.extend({
 	_onTopBtn: function(ev){
 		this.linkInThePageMove('#element-id');
 	},
-	
+
 	/**
 	 * [作品一覧]ボタンクリック
 	 * @param ev
@@ -145,7 +146,7 @@ const viewSetting = Backbone.View.extend({
 	_onWorkListBtn: function(ev){
 		this.linkInThePage('#id-work-list-title');
 	},
-	
+
 	/**
 	 * [ブログ]ボタンクリック
 	 * @param ev
@@ -153,7 +154,7 @@ const viewSetting = Backbone.View.extend({
 	_onblogBtn: function(ev){
 		this.linkInThePage('#id-blog');
 	},
-	
+
 	/**
 	 * [お問い合わせ]ボタンクリック
 	 * @param ev
@@ -161,7 +162,7 @@ const viewSetting = Backbone.View.extend({
 	_onenquiryBtn: function(ev){
 		this.linkInThePage('#id-enquiry');
 	},
-	
+
 	/**
 	 * [Ξ]ボタンクリック
 	 * @param ev
@@ -217,7 +218,7 @@ const viewSetting = Backbone.View.extend({
 	 */
 	_onWorkBtn: function(ev){
 		let _target = ev["target"];
-		let _id =  $(_target).attr("id"); 
+		let _id =  $(_target).attr("id");
 		window.location.href = $(_target).data("url") + "?id=" + _id;
 	}
 
@@ -252,7 +253,7 @@ const viewPickup = Backbone.View.extend({
 			}
 
 		}, this);
-		
+
 		// PICK UP配置 完了後 スライダー初期設定
 		this.iniSlider();
 
@@ -308,12 +309,12 @@ const viewWorklist = Backbone.View.extend({
 	initialize: function () {
 		this.render();
 	},
-	
+
 	/**
 	 * render
 	 */
 	render: function () {
-	
+
 		this.collection.each(function (model, index) {
 			// 作品一覧
 			$(this.el).append(this.compileTempworkList(model.toJSON()));
@@ -352,7 +353,7 @@ const createInstanceSetting = function(_json){
 const loadSetting = function(){
 
 	let defer = $.Deferred();
-	
+
 	let _data;
 
 	$.when(
@@ -435,7 +436,7 @@ const loadWorklist = function(){
 				// Collectionを渡す
 				collection:collectionInstanceWorklist
 			});
-			
+
 		});
 };
 
@@ -445,10 +446,11 @@ const loadWorklist = function(){
 const createInstanceWorklist = function(_json){
 
 	// Collectionインスタンス生成
-	collectionInstanceWorklist = new collectionDefine();
+	// collectionInstanceWorklist = new collectionDefine();
 
 	$.each(_json, function(index, element) {
-		collectionInstanceWorklist.add(new Backbone.Model(element));
+		// collectionInstanceWorklist.add(new Backbone.Model(element));
+		collectionInstanceSetting.add(new Backbone.Model(element));
 	});
 
 };
@@ -458,7 +460,7 @@ const createInstanceWorklist = function(_json){
  */
 var tmpl_cache;
 function _render(tmpl_name) {
-	if ( !tmpl_cache ) { 
+	if ( !tmpl_cache ) {
 		tmpl_cache = {};
 	}
 	if ( ! tmpl_cache[tmpl_name] ) {
