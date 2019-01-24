@@ -452,10 +452,11 @@ const loadWorklist = function(){
 const createInstanceWorklist = function(_json){
 
 	// Collectionインスタンス生成
-	collectionInstanceWorklist = new collectionDefine();
+//	collectionInstanceWorklist = new collectionDefine();
 
 	$.each(_json, function(index, element) {
-		collectionInstanceWorklist.add(new Backbone.Model(element));
+//		collectionInstanceWorklist.add(new Backbone.Model(element));
+		collectionInstanceSetting.add(new Backbone.Model(element));
 	});
 
 };
