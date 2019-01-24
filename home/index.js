@@ -1,5 +1,4 @@
 
-
 (function () {
 
 	// Homeアドレス
@@ -17,7 +16,7 @@
 	};
 
 	// メニュー配置
-	$('#iHeader').load('../temp_menu.html', function() {
+	$('#id_menu').load('../temp_menu.html', function() {
 
 		$.when(
 
@@ -25,9 +24,9 @@
 			loadSetting()
 
 		).done(function(){
-
+		
 			// トップ配置
-			$('#iMain').load('../temp_top.html', function() {
+			$('#id_main').load('../temp_top.html', function() {
 
 				// IE対応
 				moveHeadWidth();
@@ -36,7 +35,7 @@
 				loadWorklist();
 
 				// フッタ 配置
-				$('#iFooter').load('../temp_footer.html', function() {
+				$('#id_footer').load('../temp_footer.html', function() {
 					// ページ内遷移
 					idTransition();
 				});
@@ -46,3 +45,4 @@
 	});
 
 }());
+

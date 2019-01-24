@@ -15,7 +15,7 @@ let listId;
 	console.log(_localStorage[listId]);
 
 	// メニュー配置
-	$('#iHeader').load('../temp_menu.html', function() {
+	$('#id_menu').load('../temp_menu.html', function() {
 	
 		$.when(
 
@@ -25,14 +25,14 @@ let listId;
 		).done(function(){
 
 			let setHtml = 		'<h4 class="entry-title">縦読み漫画</h4>';
-			setHtml = setHtml + '<p class="cMain__imgWrap"><img src="../img/j0040.png" data-src="../img/j0040.png" class="lazyload"></p>';
-			$("#iMain").prepend(setHtml);
+			setHtml = setHtml + '<p class="imgCenter"><img src="../img/j0040.png" data-src="../img/j0040.png" class="lazyload"></p>';
+			$("#id_main").prepend(setHtml);
 
 			// IE対応
 			moveHeadWidth();
 
 			// フッタ 配置
-			$('#iFooter').load('../temp_footer.html');
+			$('#id_footer').load('../temp_footer.html');
 
 		});
 	});
