@@ -1,3 +1,4 @@
+'use strict';
 
 (function () {
 
@@ -24,7 +25,7 @@
 			loadSetting()
 
 		).done(function(){
-		
+
 			// トップ配置
 			$('#id_main').load('../temp_top.html', function() {
 
@@ -45,4 +46,3 @@
 	});
 
 }());
-

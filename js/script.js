@@ -56,8 +56,8 @@ const viewSetting = Backbone.View.extend({
 		this.render();
 
 		const events = {
-            'click #id-siteName'		: '_onHomeBtn',			// ヘッダ [サイト名]
-            'click #id-menuHomeBtn'		: '_onHomeBtn',			// ヘッダ [Home]
+			'click #id-siteName'		: '_onHomeBtn',			// ヘッダ [サイト名]
+			'click #id-menuHomeBtn'			: '_onHomeBtn',			// ヘッダ [Home]
 			'click #id-menuWorkListBtn'	: '_onWorkListBtn',		// ヘッダ [作品一覧]
 			'click #id-blogBtn'			: '_onblogBtn',			// ヘッダ [ブログ]
 			'click #id-enquiryBtn'		: '_onenquiryBtn',		// ヘッダ [お問い合わせ]
@@ -235,43 +235,19 @@ const viewPickup = Backbone.View.extend({
 	// テンプレートをコンパイルする
 	compileTempPickup: _.template(_render("pickup")),
 
-	initialize: function () {
-		this.render();
-	},
-
-	/**
-	 * render
-	 */
-	render: function () {
-
-		// PICK UP配置
-		this.collection.each(function (model, index) {
-
-			// PICK UP 表示
-			if(model["attributes"]["pickUpUrl"]){	// PICK UPアドレスが空白はスルー
-				$(this.el).append(this.compileTempPickup(model.toJSON()));
-			}
-
-		}, this);
-
-		// PICK UP配置 完了後 スライダー初期設定
-		this.iniSlider();
-
-	},
-
 	/**
 	 * スライダー初期設定
 	 */
 	iniSlider: function(){
 
-		// 画像がlazyLoadされる度に呼ばれるイベント
-		$('.class-slider').on('lazyLoaded', function(event, slick, image, imageSource){
-
-			// 作品一覧 縦位置調整
-			workListPaddingTop(image[0].height);
-
-		});
-
+		// // 画像がlazyLoadされる度に呼ばれるイベント
+		// $('.class-slider').on('lazyLoaded', function(event, slick, image, imageSource){
+		//
+		// 	// 作品一覧 縦位置調整
+		// 	workListPaddingTop(image[0].height);
+		//
+		// });
+// console.log($('.class-slider'));
 		$('.class-slider').slick({
 			accessibility: false,	// 矢印キーでスライドを切り替える
 			adaptiveHeight: false,	// スライドの高さが違うときに自動調整する
@@ -292,6 +268,36 @@ const viewPickup = Backbone.View.extend({
 			}]
 		});
 
+	},
+
+	/**
+	 * render
+	 */
+	render: function () {
+
+		// PICK UP配置
+		this.collection.each(function (model, index) {
+// console.log(this.compileTempPickup);
+// console.log(model.toJSON());
+// console.log(this.compileTempPickup(model.toJSON()));
+// console.log($(this.el));
+			// PICK UP 表示
+			if(model["attributes"]["pickUpUrl"]){	// PICK UPアドレスが空白はスルー
+//				$(this.el).append(this.compileTempPickup(model.toJSON()));
+				$("#id-slider").append(this.compileTempPickup(model.toJSON()));
+			}
+// console.log($(this.el));
+// w.fn.init {}
+// w.fn.init [div#id-slider.class-slider]
+		}, this);
+
+		// PICK UP配置 完了後 スライダー初期設定
+		this.iniSlider();
+
+	},
+
+	initialize: function () {
+		this.render();
 	}
 
 });
